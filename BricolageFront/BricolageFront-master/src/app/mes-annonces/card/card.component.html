@@ -1,0 +1,33 @@
+<app-loading-spinner *ngIf="this.annonceService.isLoading"></app-loading-spinner>
+<div *ngIf="!this.annonceService.isLoading">
+  <app-navbar></app-navbar>
+  <div class="container">
+    <div class="row">
+      <ngb-alert type="danger"
+                 class="text-center col-sm-6 offset-sm-3"
+                 *ngIf="errorMessage">{{errorMessage}}</ngb-alert>
+    </div>
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let annonce of annonces" style="cursor: pointer"
+           routerLink='{{"/mesAnnonces/"+annonce?.id}}'>
+        <mat-card class="annonce-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{annonce?.client?.nom + " " + annonce?.client?.prenom}}</mat-card-title>
+            <mat-card-subtitle>{{annonce?.titre}}</mat-card-subtitle>
+          </mat-card-header>
+          <img class=" img-responsive annonce-image" mat-card-image
+               src='{{ "data:image/jpeg;base64," + annonce?.image?.picByte}}'/>
+          <mat-card-content>
+            <p>
+              {{annonce?.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

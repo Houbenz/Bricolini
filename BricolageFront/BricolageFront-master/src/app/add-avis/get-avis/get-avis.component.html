@@ -1,0 +1,10 @@
+<div *ngIf="!isLoading" class="container col-sm-8">
+
+  <div class="form-group inputt star-group">
+    <ngb-rating [max]="5" [(rate)]="rate" [readonly]="true" name="rate"></ngb-rating>
+
+  </div>
+
+  <p>{{avis?.message}}</p>
+</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

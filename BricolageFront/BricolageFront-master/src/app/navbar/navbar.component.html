@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light"
+     [ngClass]="[this.auth.isAdmin() ? 'navAdmin' : '',
+     this.auth.isBricoleur() ? 'navBrico' : '',
+     this.auth.isUser() ? 'navClient' : '']">
+  <a *ngIf="this.auth.isUser()" class="navbar-brand" routerLink="/"><img class="logo" src="/assets/images/logo.png"/></a>
+  <a *ngIf="this.auth.isAdmin()" class="navbar-brand" routerLink="/admin/home"><img class="logo" src="/assets/images/logo.png"/></a>
+  <a *ngIf="this.auth.isBricoleur()" class="navbar-brand" routerLink="/annonces"><img class="logo" src="/assets/images/logo.png"/></a>
+  <ul class="navbar-nav mr-auto" *ngIf="this.auth.isBricoleur()">
+    <li class="nav-item">
+      <a class="nav-link lien"
+         routerLink="/mesAnnonces">Devis</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link lien" routerLink="/list_proposition">Mes propositions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link lien" (click)="onGetPremium()">S'abonner</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav mr-auto" *ngIf="this.auth.isUser()">
+    <li class="nav-item">
+      <a class="nav-link lien" routerLink="/demanderService">Demander un service</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link lien" routerLink="/mesAnnonces">Mes Annonces</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="this.auth.isAdmin()">
+    <li class="nav-item">
+      <a class="nav-link lien" aria-current="page" routerLink="/mesAnnonces">Consulter les Annonces</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle lien" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Gestion des domaines
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="nav-link lien" aria-current="page" routerLink="/admin/add_domaine">Ajouter un Domaine</a>
+        <a class="nav-link lien" aria-current="page" routerLink="/admin/home">Consulter les Domaines</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle lien" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Gestion des modérateurs
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+        <a class="nav-link lien" routerLink="/ajouter_moderateur">Ajouter un Modérateur</a>
+        <a class="nav-link lien" routerLink="/admin/block_user">Bloquer un Utilisateur</a>
+        <a class="nav-link lien" routerLink="/admin/voir_signalements">Voir les signalements</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link lien" aria-current="page" routerLink="/signalements">Consulter les signalements</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" *ngIf="!this.auth.isAuthenticated()">
+      <a class="nav-link lien" routerLink="/login">Nous Rejoindre</a>
+    </li>
+    <li class="nav-item float-right" *ngIf="this.auth.isBricoleur()">
+      <mat-icon matBadge={{matBadge}}
+                matBadgeColor="warn"
+                [matMenuTriggerFor]="menu"
+                matTooltip="Notifications"
+                class="notification">notifications
+      </mat-icon>
+      <mat-menu #menu="matMenu">
+        <button class="lien"
+                *ngFor="let notif of notifications"
+                (click)="navigateToAnnonce(notif.annonce.id, notif.id)"
+                mat-menu-item>
+          {{"Le client " + notif.user.nom + " " + notif.user.prenom + " a posté une annonce"}}</button>
+      </mat-menu>
+    </li>
+    <li class="nav-item float-right">
+      <mat-icon [matMenuTriggerFor]="profil"
+                matTooltip="Mon profile"
+                class="notification">account_circle
+      </mat-icon>
+      <mat-menu #profil="matMenu">
+        <button class="lien"
+                routerLink="/monProfile"
+                mat-menu-item>Mon profile
+        </button>
+        <button class="lien"
+                (click)="onLogout()"
+                mat-menu-item>Deconnexion
+        </button>
+      </mat-menu>
+    </li>
+  </ul>
+</nav>

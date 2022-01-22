@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-6">
+    <img *ngIf="!this.auth.isAuthenticated || this.auth.isUser()||this.auth.isBricoleur()" class="img-fluid rounded" src="assets/images/home.svg">
+    <img *ngIf="this.auth.isAdmin()" class="img-fluid rounded" src="assets/images/homeAdmin.svg">
+  </div>
+  <div class="col-6">
+    <h1 style="color: #a86e07" *ngIf="this.auth.isUser()||this.auth.isBricoleur()">BRICOLINI</h1>
+    <h1 style="color: #1A0F91" *ngIf="this.auth.isAdmin()">BRICOLINI</h1>
+    <h3 style="color: #EF9E0F" *ngIf="this.auth.isUser()||this.auth.isBricoleur()">Votre plateforme pour regler vos problemes</h3>
+    <h3 style="color: #7D97F4FF" *ngIf="this.auth.isAdmin()">Administrer l'application BRICOLINI</h3>
+    <div class="row">
+      Bricolini est un application Web dédiée pour les personnes qui rencontrent des
+      difficultés dans la vie et qui ont besoin de l'aide d'un professionnel, disons que vous n'arrivez pas a fixer le robinet de vos toilettes et votre maison coule d'eau, n'ayez plus de soucie,
+      avec notre plateforme, vous trouverez des experts dans divers aspect de la vie.
+    </div>
+  </div>
+</div>

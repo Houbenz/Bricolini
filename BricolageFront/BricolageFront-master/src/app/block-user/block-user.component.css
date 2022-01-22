@@ -1,0 +1,15 @@
+form {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25vh;
+  min-height: 250px;
+  padding: 2.5%;
+  width: 25vw;
+  min-width: 250px;
+  margin: auto;
+
+  border: solid 1px black;
+}
+

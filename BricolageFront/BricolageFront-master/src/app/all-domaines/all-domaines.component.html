@@ -1,0 +1,25 @@
+<div class="container mt-4">
+
+  <h3 class="text-center">Liste des domaines</h3>
+  <table class="table mt-3 text-left">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Description</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let domaine of domaines">
+      <td>{{domaine.id}}</td>
+      <td>{{domaine.domaine}}</td>
+      <td>{{domaine.description}}</td>
+      <td>
+        <mat-icon aria-hidden="false" class="delete" aria-label="delete"
+                  (click)="deleteDomaine(domaine.id)">delete</mat-icon>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

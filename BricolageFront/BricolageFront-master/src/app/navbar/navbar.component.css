@@ -1,0 +1,52 @@
+@import "../app.component.css";
+.navBrico {
+  background-color: transparent !important;
+  height: 9%;
+}
+.navAdmin {
+  background-color: #bdd0fb !important;
+  height: 9%;
+}
+.navClient {
+  background-color: #ffdf57 !important;
+  height: 9%;
+}
+
+.logo {
+  max-height: 50px;
+  max-width: 50px;
+  margin-left: 10px;
+}
+
+.lien {
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  color: #424140 !important;
+}
+
+.notification {
+  font-size: 1.8em;
+  color: #424140 !important;
+  margin-left: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.mat-badge-content .mat-badge-active {
+  color: #966c05 !important;
+}
+
+.client_theme{
+
+  background-color: red;
+
+}
+
+.bricoleur_theme{
+  background-color: wheat;
+}
+
+.admin_theme{
+  background-color: #966c05;
+}

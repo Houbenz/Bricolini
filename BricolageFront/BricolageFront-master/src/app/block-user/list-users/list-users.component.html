@@ -1,0 +1,34 @@
+<div class="container mt-5">
+
+  <h3 class="text-center">Résultat de Recherche</h3>
+  <div *ngIf="message" class="offset-2 col-sm-8 text-center alert alert-warning">
+    {{message}}
+  </div>
+  <table class="table mt-3 text-center">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Bloquer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.nom}}</td>
+      <td>{{user.prenom}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role}}</td>
+      <td>
+        <mat-icon aria-hidden="false"
+                  class="delete"
+                  aria-label="delete"
+                  (click)="onBlock(user.id)">delete</mat-icon>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

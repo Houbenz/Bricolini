@@ -1,0 +1,2 @@
+export const DELETE_ANNONCE = "DELETE_ANNONCE";
+export const DELETE_PERSON = "DELETE_PERSON";

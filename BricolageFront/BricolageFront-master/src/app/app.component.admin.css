@@ -1,0 +1,111 @@
+.inputt {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+select:focus,
+.uneditable-input:focus {
+  border-color: #3D8DF2 !important;
+  box-shadow: 0 1px 1px #62A6FAFF inset, 0 0 8px #62A6FAFF !important;
+  outline: 0 none !important;
+}
+
+ngb-rating {
+  color: #EF9E0F;
+  font-size: 50px;
+}
+
+.star-group {
+  margin: 0 calc(50% - 115px);
+}
+
+.btn {
+  border-radius: 0 !important;
+}
+
+.yellow, .yellowHovred:hover {
+  background-color: #EF9E0F !important;
+  color: white;
+  margin-right: 5px !important;
+  border-radius: 15px !important;
+}
+
+.yellowHovred {
+  border-color: #EF9E0F !important;
+  color: black;
+  margin-right: 5px !important;
+}
+
+.gray {
+  background-color: #666666 !important;
+  color: white;
+  margin-right: 5px !important;
+  border-radius: 15px !important;
+}
+
+.blue {
+  background-color: #087cc7 !important;
+  color: white;
+  margin-right: 5px !important;
+  border-radius: 15px !important;
+}
+
+.red {
+  background-color: #ff5858 !important;
+  color: white;
+  margin-right: 5px !important;
+  border-radius: 15px !important;
+}
+
+.darkBlue {
+  background-color: #3D8DF2 !important;
+  color: white;
+  margin-right: 5px !important;
+  border-radius: 15px !important;
+}
+
+.green {
+  background-color: #47aa50 !important;
+  color: white;
+  margin-right: 5px !important;
+  border-radius: 15px !important;
+}
+
+label {
+  font-weight: bold !important;
+}
+
+mat-dialog-container#modal-component {
+  border: 3px solid #262626;
+  border-radius: 11px;
+  background-color: #1a1a1a;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #CE8209 !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #CE8209 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #CE8209 !important;;
+}

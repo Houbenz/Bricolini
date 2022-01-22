@@ -1,0 +1,12 @@
+.annonce-card {
+  max-width: 600px;
+}
+
+.annonce-image {
+  height: 170px !important;
+}
+
+.example-header-image {
+  background-image: url('src/assets/images/user.png');
+  background-size: cover;
+}

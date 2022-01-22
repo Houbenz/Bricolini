@@ -1,0 +1,20 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1
+      [ngClass]=" data.type == DIALOG_ERROR ? 'redStyle' : ( data.type == DIALOG_SUCCES ? 'greenStyle' : ( data.type == DIALOG_BLUE? 'blueStyle' : 'yellowStyle'))">{{data.header}}</h1>
+  </header>
+  <section id="modal-body">
+    <p>{{data.message}}</p>
+  </section>
+  <footer id="modal-footer">
+    <button mat-raised-button
+            class="gray"
+            (click)="closeModal()">Annuler
+    </button>
+    <button mat-raised-button
+            [ngClass]=" data.type == DIALOG_ERROR ? 'red' : ( data.type == DIALOG_SUCCES ? 'green' : ( data.type == DIALOG_BLUE? 'blue' : 'yellow'))"
+            class="yellow"
+            [mat-dialog-close]="true">Confirmer
+    </button>
+  </footer>
+</div>

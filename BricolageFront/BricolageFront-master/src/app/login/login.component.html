@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="container col-md-6 col-sm-8 col-lg-4">
+  <h2 class="text-center" *ngIf="!this.authservice.showResetPassword && !isLoading">Bienvenue sur BRICOLINI</h2>
+  <h2 class="text-center" *ngIf="this.authservice.showResetPassword && !isLoading">Réinitialiser votre mot de passe</h2>
+  <div *ngIf="!this.authservice.showResetPassword && !isLoading" class="row container">
+    <button type="submit" [ngClass]=" this.authservice.showRegister ? 'yellow' :'gray'"
+            class="col btn"
+            (click)="onShowRegister()">S'inscrire
+    </button>
+    <button type="submit"
+            [ngClass]=" this.authservice.showLogin ? 'yellow' :'gray'"
+            class="col btn"
+            (click)="onShowLogin()">S'authentifier
+    </button>
+  </div>
+  <div *ngIf="this.authservice.showResetPassword && !isLoading" class="row container">
+    <button type="submit"
+            class="col btn gray"
+            (click)="onShowRegister()">S'inscrire
+    </button>
+    <button type="submit"
+            class="col btn yellow"
+            (click)="onShowLogin()">S'authentifier
+    </button>
+  </div>
+
+  <div *ngIf="this.authservice.showRegister && !isLoading">
+    <app-register></app-register>
+  </div>
+  <br>
+  <form *ngIf="this.authservice.showLogin && !isLoading" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <ngb-alert type="danger" class="text-center" *ngIf="errorMessage">{{errorMessage}}</ngb-alert>
+    <div class="form-group inputt">
+      <input type="text"
+             class="form-control"
+             placeholder="Email"
+             formControlName="username">
+    </div>
+    <div class="form-group inputt">
+      <input type="password"
+             class="form-control"
+             placeholder="mot de passe"
+             formControlName="password">
+    </div>
+    <button type="submit"
+            class="btn yellow float-right">S'authentifer
+    </button>
+    <a class="alert-link text-warning"
+       style="cursor:pointer;"
+       (click)="onShowResetPassword()">mot de passe oublié</a>
+    <br><br>
+  </form>
+  <app-reset-password *ngIf="this.authservice.showResetPassword && !isLoading"></app-reset-password>
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+</div>

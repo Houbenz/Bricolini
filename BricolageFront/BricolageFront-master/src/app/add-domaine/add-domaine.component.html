@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+
+<div class="container mt-3">
+  <h3 class="text-center">Ajouter un Domaine</h3>
+  <div *ngIf="this.responseMessage" class="text-center alert alert-success">
+    {{this.responseMessage}}
+  </div>
+  <form #domaineForm="ngForm" (ngSubmit)="onSendDomaine(); domaineForm.reset()">
+
+    <div class="form-group inputt">
+      <label for="title">Titre</label>
+      <input class="form-control"
+             type="text"
+             name="title"
+             id="title" minlength="4"
+             [(ngModel)]="myDomaine.domaine"
+             #title="ngModel" required>
+    </div>
+    <small [hidden]="title.valid || title.pristine"
+           class="form-text text-danger">
+      Le titre et requis et doit avoir au moins 4 caractéres.
+    </small>
+
+    <div class="formGroup ">
+      <label for="description">Description</label>
+      <textarea class="form-control input" name="description" id="description" rows="5"
+                [(ngModel)]="myDomaine.description"
+                #description="ngModel" required minlength="10"></textarea>
+    </div>
+
+    <small [hidden]="description.valid || description.pristine"
+           class="form-text text-danger">
+      La description est requise et doit avoir au moins 10 caractéres.
+    </small>
+    <div class="d-flex flex-row justify-content-center mt-2">
+      <button type="submit" class="btn darkBlue center mr-3" [disabled]="domaineForm.form.invalid">Ajouter</button>
+    </div>
+  </form>
+</div>

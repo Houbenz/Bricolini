@@ -1,0 +1,99 @@
+<app-navbar *ngIf="this.authservice.isAdmin && this.authservice.isAuthenticated()"></app-navbar>
+<div class="container">
+  <div *ngIf="this.authservice.isAdmin && this.authservice.isAuthenticated()">
+    <h3 class="text-center">Ajouter un modérateur</h3><hr/>
+  </div>
+
+  <div *ngIf="responseMessage" [ngClass]=" isError ? 'alert alert-danger' : 'alert alert-success'">
+    {{responseMessage}}
+  </div>
+  <form #registerForm="ngForm">
+    <div class="form-group inputt">
+      <input type="text"
+             class="form-control"
+             placeholder="Nom"
+             [(ngModel)]="user.nom"
+             name="nom"
+             required>
+    </div>
+    <div class="form-group inputt">
+      <input type="text"
+             class="form-control"
+             placeholder="Prénom"
+             [(ngModel)]="user.prenom"
+             name="prenom"
+             #name="ngModel"
+             required>
+    </div>
+    <div class="form-group inputt">
+      <input type="text"
+             class="form-control"
+             placeholder="Email"
+             [(ngModel)]="user.email"
+             name="email"
+             #message="ngModel"
+             required>
+    </div>
+
+    <div class="form-group inputt">
+      <input type="text"
+             class="form-control"
+             placeholder="Adresse"
+             [(ngModel)]="user.adresse"
+             name="adresse"
+             required>
+    </div>
+    <div class="form-group inputt">
+      <input type="text"
+             class="form-control"
+             placeholder="Téléphone"
+             [(ngModel)]="user.phone_number"
+             name="phone_number"
+             required>
+    </div>
+    <select class="m-md-1 custom-select" (change)="onRoleChange()" [(ngModel)]="user.role" name="role" required>
+      <option *ngFor="let r of roles" value="{{r.role}}">{{r.role}}</option>
+    </select>
+
+    <div *ngIf="showBricoleurFields">
+
+      <select class="m-md-1 custom-select" [(ngModel)]="user.domaine" name="domaine" required>
+        <option value="">Choisissez un domaine</option>
+        <option *ngFor="let d of domaines" value="{{d.id}}">{{d.domaine}}</option>
+      </select>
+
+      <select class="m-md-1 custom-select" [(ngModel)]="user.premium" name="premium" required>
+        <option value="">Choisissez votre abonnement</option>
+        <option value="true">Premium</option>
+        <option value="false">Non premium</option>
+      </select>
+    </div>
+
+    <div class="form-group inputt">
+      <input type="password"
+             class="form-control"
+             [(ngModel)]="user.password"
+             name="passwordRegister"
+             placeholder="Mot de passe"
+             required>
+    </div>
+    <div class="form-group inputt">
+      <input type="password"
+             class="form-control"
+             [(ngModel)]="user.repassword"
+             name="repasswordRegister"
+             placeholder="Rentrer le mot de passe"
+
+             required>
+    </div>
+    <button type="submit" class="btn gray float-right"
+            [disabled]="registerForm.invalid"
+            (click)="onRegister()">S'inscrire
+    </button>
+    <button class="btn yellow float-right"
+            (click)="registerForm.reset()">Annuler
+    </button>
+    <br><br>
+  </form>
+
+</div>

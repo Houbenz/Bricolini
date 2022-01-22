@@ -1,0 +1,27 @@
+<div class="container col-sm-10">
+  <h2 class="text-center">Signaler une personne</h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <div class="form-group inputt">
+      <input type="text" class="form-control" name="raison" placeholder="raison" ngModel required/>
+
+    </div>
+    <div class="form-group inputt">
+      <textarea
+        class="form-control"
+        name="message"
+        placeholder="Message"
+        ngModel
+        required>Description</textarea>
+    </div>
+
+    <button type="submit" class="btn red float-right"
+            [disabled]="registerForm.invalid">Publier
+    </button>
+    <button class="btn yellow float-right"
+            (click)="registerForm.reset()">Annuler
+    </button>
+    <br><br>
+  </form>
+  <br>
+</div>

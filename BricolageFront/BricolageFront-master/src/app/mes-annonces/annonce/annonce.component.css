@@ -1,0 +1,9 @@
+@import "../../app.component.css";
+
+.annonceImage {
+  height: 50%;
+  width: 60%;
+}
+.propoRate{
+  font-size: 25px;
+}

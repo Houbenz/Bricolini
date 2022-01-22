@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="container mt-4">
+
+  <h3 class="text-center">Liste des domaines</h3>
+  <table class="table mt-3 text-center">
+    <thead>
+    <tr>
+      <th scope="col">Titre d'annonce</th>
+      <th scope="col">Email Bricoleur </th>
+      <th scope="col">Raison</th>
+      <th scope="col">Msessage</th>
+      <th scope="col">Etat</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let signalement of signalements">
+
+      <td>{{signalement.annonce.titre}}</td>
+      <td>{{signalement.user.username}}</td>
+      <td>{{signalement.message}}</td>
+      <td>{{signalement.raison}}</td>
+      <td>
+        <div *ngIf="signalement.user.bloqued == 0">
+          <button class="btn red" (click)="onBlock(signalement.user.id)">Bloquer</button>
+        </div>
+
+        <div *ngIf="signalement.user.bloqued == 1" class="red">
+          bloqué
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

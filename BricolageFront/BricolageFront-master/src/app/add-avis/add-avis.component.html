@@ -1,0 +1,31 @@
+<div class="container ">
+  <button type="submit"
+          (click)="showSignalement()"
+          class="btn red centered">Signaler
+  </button>
+  <br>
+  <h2 class="text-center">Publiez un avis</h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <div class="form-group inputt star-group">
+      <ngb-rating [max]="5" [(rate)]="rate" [readonly]="false" name="rate"></ngb-rating>
+
+    </div>
+    <div class="form-group inputt">
+      <textarea
+        class="form-control"
+        name="message"
+        placeholder="Message"
+        ngModel
+        required>Description</textarea>
+    </div>
+
+    <button type="submit" class="btn gray float-right"
+            [disabled]="registerForm.invalid">Publier
+    </button>
+    <button class="btn yellow float-right" type="button"
+            (click)="closeDialog()">Annuler
+    </button>
+  </form>
+  <br>
+</div>

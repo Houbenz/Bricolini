@@ -1,0 +1,112 @@
+<app-navbar></app-navbar>
+<div class="container col-sm-8 col-md-8 col-lg-6">
+  <ngb-alert type="success" class="text-center alertt" *ngIf="showMessage">{{message}}</ngb-alert>
+  <h2 class="text-center">Mon <span style="color: #966c05">profil</span></h2>
+  <div class="row">
+    <div class="col-2">
+      <img class="img-fluid" src="assets/images/user.png">
+      <b>Ilyass Ejjaouchi</b>
+    </div>
+    <div class="col-10">
+      <form #updateInfoForm="ngForm" [formGroup]="userForm" (ngSubmit)="onUpdateInfo(updateInfoForm)">
+        <div class="mb-3 row form-group inputt">
+          <label for="nom" class="col-sm-4 col-form-label">Nom</label>
+          <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   id="nom"
+                   name="nom"
+                   formControlName="nom"
+                   placeholder="Nom"
+                   ngModel
+                   required>
+          </div>
+        </div>
+        <div class="mb-3 row form-group inputt">
+          <label for="prenom" class="col-sm-4 col-form-label">Prénom</label>
+          <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   id="prenom"
+                   name="prenom"
+                   formControlName="prenom"
+                   placeholder="Prénom"
+                   ngModel
+                   required>
+          </div>
+        </div>
+        <div class="mb-3 row form-group inputt">
+          <label for="adresse" class="col-sm-4 col-form-label">Adresse</label>
+          <div class="col-sm-8">
+            <input type="text"
+                   class="form-control"
+                   id="adresse"
+                   name="adresse"
+                   formControlName="adresse"
+                   placeholder="Adresse"
+                   ngModel
+                   required>
+          </div>
+        </div>
+        <div class="mb-3 row form-group inputt">
+          <label for="phone_number" class="col-sm-4 col-form-label">Numéro de téléphone</label>
+          <div class="col-sm-8">
+            <input type="number"
+                   class="form-control"
+                   id="phone_number"
+                   name="phone_number"
+                   formControlName="phone_number"
+                   placeholder="Téléphone"
+                   ngModel
+                   required>
+          </div>
+        </div>
+
+        <div class="mb3 form-group row">
+          <label class="col-sm-4 col-form-label">Domaine</label>
+          <div class="col-sm-8">
+            <select class="custom-select" formControlName="domaine" required>
+              <option *ngFor="let d of domaines" value="{{d.id}}">{{d.domaine}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row form-group inputt">
+          <label for="password" class="col-sm-4 col-form-label">Mot de passe</label>
+          <div class="col-sm-8">
+            <input type="password"
+                   id="password"
+                   class="form-control"
+                   name="password"
+                   formControlName="password"
+                   placeholder="Mot de passe"
+                   ngModel
+                   required>
+          </div>
+        </div>
+        <div class="mb-3 row form-group inputt">
+          <label for="repassword" class="col-sm-4 col-form-label">Confirmer votre mot de passe</label>
+          <div class="col-sm-8">
+            <input type="password"
+                   id="repassword"
+                   class="form-control"
+                   name="repassword"
+                   formControlName="repassword"
+                   placeholder="Rentrer le mot de passe"
+                   ngModel
+                   required>
+          </div>
+        </div>
+        <input
+          type="button"
+          value="Supprimer mon compte"
+          (click)="openModal()"
+          class="btn red float-right"/>
+        <button type="submit" class="btn gray float-right">
+          Modifier
+        </button>
+        <input type="button" value="Annuler" class="btn yellow float-right" (click)="updateInfoForm.reset()"/>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</div>

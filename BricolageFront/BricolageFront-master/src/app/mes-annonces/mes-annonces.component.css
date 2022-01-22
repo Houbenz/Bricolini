@@ -1,0 +1,33 @@
+@import "../app.component.css";
+
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #CE8209;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+td, tr {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.delete {
+  cursor: pointer;
+  color: #ff5858;
+}
+
+.edit {
+  cursor: pointer;
+  color: #CE8209;
+}
+
+.details {
+  cursor: pointer;
+  color: dimgray;
+}

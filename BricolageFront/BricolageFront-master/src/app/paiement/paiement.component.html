@@ -1,0 +1,30 @@
+<form class="ui form">
+  <h4 class="ui dividing header">Paiement du service</h4>
+  <div class="form-group">
+    <label for="inputCardType">Type de carte</label>
+    <select id="inputCardType" class="form-control">
+      <option selected>Choose...</option>
+      <option>Visa</option>
+      <option>American Express</option>
+      <option>Discover</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Numéro de la carte</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="cvc">CVC</label>
+      <input type="text" class="form-control" id="cvc">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Expiration date</label>
+      <input type="text" class="form-control">
+    </div>
+    <div>
+      <button type="submit" class="btn blue float-right" (click)="onClosePaiment()">Valider</button>
+      <button type="submit" class="btn yellow float-right" (click)="onClosePaiment()">Annuler</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div *ngIf="!isLoading" class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-2">
+      <h3>Details de l'annonce {{annonce?.id}}</h3>
+      <hr>
+      <h4>{{annonce?.titre}}</h4>
+      <h4> Mon budget : <b class="prix">{{annonce?.budgetClient}}<i class="euro sign icon"></i></b></h4>
+      <img class="text-center img-fluid annonceImage" [src]="retrievedImage">
+      <h5>{{annonce?.description}}</h5>
+      <p>{{annonce?.details}}</p>
+    </div>
+    <div class="col-sm-8 offset-2">
+      <button type="submit"
+              *ngIf="this.auth.isUser() && isDevis && !annonce?.termine"
+              (click)="showAvis()"
+              class="btn yellow float-right">Marquer comme terminé
+      </button>
+      <button type="submit"
+              *ngIf="this.auth.isBricoleur() && !this.alreadyProposed"
+              (click)="addProposition()"
+              class="btn blue float-right">Ajouter Proposition
+        <i class="plus circle icon"></i>
+      </button>
+      <h2>Propositions</h2>
+      <hr/>
+      <div class="ui comments commentaire" *ngFor="let propos of this.propoService.propositions">
+        <div class="comment" style="padding: 20px" *ngIf="!errorMessage">
+          <a class="avatar">
+            <img src="assets/images/user.png">
+          </a>
+          <div class="content">
+            <a class="author">{{propos.bricoleur.prenom + ' ' + propos.bricoleur.nom}}</a>
+            <div class="metadata">
+              <span class="date">Depuis {{propos.date}}</span>
+            </div>
+            <ngb-rating [max]="5" [(rate)]="propos.bricoleur.rate!" [readonly]="true" class="propoRate" name="rate"></ngb-rating>
+
+            <b class="float-right prix"><i class="euro sign icon"></i>{{propos.price }}</b>
+            <div class="text">
+              {{propos.message}}
+            </div>
+            <div class="actions" *ngIf="this.auth.isUser()">
+              <div *ngIf="!propos.devis">
+                <button type="submit" (click)="onSendDevis(propos.id,propos.bricoleur.id)"
+                        class="btn blue float-right">Valider
+                </button>
+              </div>
+              <br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

@@ -1,0 +1,9 @@
+@import "../app.component.css";
+
+.alertt {
+  font-weight: bold;
+}
+
+.date {
+  height: 5px !important;
+}

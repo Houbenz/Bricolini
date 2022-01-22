@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+
+
+  <h3 class="text-center">Bloquer un Utilisateur</h3>
+  <form action="" class="form" [formGroup]="blockForm" (ngSubmit)="onSearch()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email de l'utilisateur</mat-label>
+      <input matInput type="text" formControlName="queryControl" ngModel
+             required>
+    </mat-form-field>
+
+    <button mat-flat-button type="submit" class="btn btn-warning" [disabled]="blockForm.invalid">Rechercher</button>
+  </form>
+</div>
+
+<app-list-users *ngIf="users.length > 0" [users]="users"></app-list-users>

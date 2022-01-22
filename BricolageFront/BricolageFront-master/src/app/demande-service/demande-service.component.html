@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+<div *ngIf="!isLoading" class="container col-sm-8">
+  <ngb-alert type="success" class="text-center alertt" *ngIf="showMessage">{{message}}</ngb-alert>
+  <h2 class="text-center">Demande de service</h2>
+  <hr>
+  <form [formGroup]="annonceForm"
+        (ngSubmit)="onDemandeService()">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Domaine</label>
+      <div class="col-sm-10">
+        <select class="custom-select" formControlName="idDomaine" required>
+          <option *ngFor="let d of domaines" value="{{d.id}}">{{d.domaine}}</option>
+        </select>
+      </div>
+    </div>
+    <input type="text" hidden formControlName="id"/>
+    <input type="text" hidden formControlName="idUser"/>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Titre</label>
+      <div class="form-group inputt col-sm-10">
+        <input type="text"
+               class="form-control"
+               placeholder="Titre"
+               required
+               formControlName="titre">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Date</label>
+      <div class="form-group inputt col-sm-8">
+        <mat-form-field class="date" appearance="fill">
+          <mat-label>Choisissez une date</mat-label>
+          <input formControlName="date" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Adresse</label>
+      <div class="form-group inputt col-sm-10">
+        <input type="text"
+               class="form-control"
+               placeholder="Adresse"
+               required
+               formControlName="adresse">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Votre budget</label>
+      <div class="form-group inputt col-sm-10">
+        <input type="number"
+               class="form-control"
+               placeholder="Votre budget"
+               required
+               formControlName="budgetClient">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Description</label>
+      <div class="form-group inputt col-sm-10">
+        <input type="text"
+               class="form-control"
+               placeholder="Description"
+               required
+               formControlName="description">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="image">Choisissez une photo</label>
+      <input type="file"
+             class="form-control-file col-sm-10"
+             (change)="onShowImage($event)"
+             id="image">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="Details">Détails</label>
+      <div class="form-group inputt col-sm-10">
+        <textarea
+          class="form-control"
+          id="Details"
+          required
+          formControlName="details"
+          rows="3"></textarea>
+      </div>
+
+    </div>
+    <button type="submit"
+            [disabled]="annonceForm.invalid"
+            class="btn gray float-right">Envoyer
+    </button>
+    <input class="btn yellow float-right"
+           type="button"
+           value="Annuler"/>
+    <br><br>
+  </form>
+</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

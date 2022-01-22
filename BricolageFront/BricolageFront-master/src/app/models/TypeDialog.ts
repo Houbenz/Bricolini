@@ -1,0 +1,4 @@
+export const DIALOG_WARNING = "DIALOG_WARNING";
+export const DIALOG_ERROR = "DIALOG_ERROR";
+export const DIALOG_SUCCES = "DIALOG_SUCCES";
+export const DIALOG_BLUE = "DIALOG_BLUE";
